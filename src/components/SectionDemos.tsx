@@ -2,8 +2,11 @@ import React from "react";
 import Heading from "./Heading";
 import home1 from "images/home/1.png";
 import home2 from "images/home/2.png";
+import home3 from "images/home/3.png";
 import Badge from "./Badge";
 import { ArrowRightIcon } from "@heroicons/react/outline";
+import { CONSTANTS } from "constants/constants";
+import Button from "./Button";
 
 export const SectionDemos = () => {
   const data = [
@@ -20,6 +23,14 @@ export const SectionDemos = () => {
       link: "https://chisnghiax.com/chisfis/home-2",
       tags: ["new!"],
     },
+    {
+      img: home3,
+      text: "Home 3",
+      subText: "Home Default",
+      link: "https://chisnghiax.com/chisfis/home-3",
+      tags: ["new!"],
+    },
+    ...(window.MORE_DEMOS || []),
   ];
 
   const renderItem = (item: typeof data[number], index: number) => {
@@ -33,9 +44,9 @@ export const SectionDemos = () => {
       >
         <div className="relative z-0 h-0 aspect-w-8 aspect-h-12">
           {item.tags?.map((tag, index) => (
-            <div key={index} className="absolute top-1 left-1.5 z-10">
+            <div key={index} className="absolute text-left top-1 left-1.5 z-10">
               <Badge
-                className="relative uppercase"
+                className="relative uppercase shadow-xl"
                 name={tag}
                 color={
                   tag === "new!"
@@ -72,7 +83,7 @@ export const SectionDemos = () => {
   };
 
   return (
-    <section className="dark text-slate-200">
+    <section className="dark text-slate-200 text-center">
       <Heading className="text-center text-slate-100">
         {" "}
         <i className="text-orange-500"> 30+</i> Inner Pages
@@ -81,16 +92,29 @@ export const SectionDemos = () => {
         Modern, Elegant & Beautiful your listings site. <br /> We plan to show
         new demos regularly 🍕
       </p>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-11 mt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-11 mt-12">
         {data.map(renderItem)}
-        <div className="hidden lg:block shadow-2xl h-0 aspect-w-8 aspect-h-12 bg-slate-800 bg-opacity-60 rounded-xl border-2 border-slate-700">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <h3 className="uppercase tracking-widest text-2xl">
-              30+ Inner pages
-            </h3>
-          </div>
-        </div>
       </div>
+      <Button
+        className="mx-auto inline-flex lg:px-10 lg:py-4 text-base mt-12"
+        href={CONSTANTS.liveDemoUrl}
+      >
+        <span> VIEW MORE 30+ PAGES </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 ml-3"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </Button>
     </section>
   );
 };

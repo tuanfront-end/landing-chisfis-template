@@ -8,6 +8,15 @@ import Section6 from "components/Section6";
 import { SectionDemos } from "components/SectionDemos";
 import React from "react";
 
+declare global {
+  var MORE_DEMOS: {
+    img: string;
+    text: string;
+    subText: string;
+    link: string;
+  }[];
+}
+
 function App() {
   return (
     <div className="relative">
