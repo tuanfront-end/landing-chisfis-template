@@ -14,6 +14,7 @@ declare global {
     text: string;
     subText: string;
     link: string;
+    tags?: string[];
   }[];
 }
 
